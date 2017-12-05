@@ -3,6 +3,7 @@ const path = require("path");
 
 const INPUT = fs
   .readFileSync(path.join(__dirname, "input"), "utf-8")
+  .trim()
   .split("\n");
 
 function isValid1(passphrase) {
@@ -32,7 +33,7 @@ function isValid2(passphrase) {
 function count(check) {
   return INPUT.reduce(
     (count, passphrase) =>
-      passphrase && check(passphrase) ? count + 1 : count,
+      check(passphrase) ? count + 1 : count,
     0
   );
 }
